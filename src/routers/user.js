@@ -1,5 +1,4 @@
 const express = require('express')
-const { use } = require('express/lib/router')
 const router = new express.Router()
 const User = require('../models/user')
 const auth = require('../middlewear/auth')

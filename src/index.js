@@ -36,6 +36,39 @@ app.listen(port, () => {
 })
 
 
+
+
+// const main=async()=>{
+//     // const task=await Task.findById('6365fc54a51227571065d509')
+//     // await task.populate('owner')
+//     // console.log(task.owner)
+
+//     const user= await User.findById('6365fc3ca51227571065d503')
+//     await user.populate('tasks')
+//     console.log(user.tasks);
+// }
+
+
+// main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const pet={
 //     name:'uttkarsh'
 
