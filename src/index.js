@@ -8,22 +8,31 @@ const userRouter=require('./routers/user')
 const taskRouter=require('./routers/task')
 
 
-// app.use((req,res,next)=>{
-//     if(req.method=='GET'){
+const multer=require('multer')
+const upload=multer({
+    dest:'images',
+    limits:{
+        fileSize: 1000000
+    },
+    fileFilter(req,file,cb){
+        if(!file.originalname.match(/\.(doc|docs)$/)){
+            cb(new Error('File must be a Word Document'))
+        }
+        cb(undefined,true)
 
+    }
+})
 
-//     }else{
-//         next()
-//     }   
-//      next()
+app.post('/upload',upload.single('upload'),(req,res)=>{
+    res.send()
+},(error,req,res,next)=>{
+    res.status(400).send({error: error.message})
 
-// })
+})
 
-// app.use((req,res,next)=>{
-//     res.status(503).send('Site is currently down. Check back soon!!')
-// })
 
 app.use(express.json())
+
 
 app.use(userRouter)
 app.use(taskRouter)
@@ -37,19 +46,6 @@ app.listen(port, () => {
 
 
 
-
-// const main=async()=>{
-//     // const task=await Task.findById('6365fc54a51227571065d509')
-//     // await task.populate('owner')
-//     // console.log(task.owner)
-
-//     const user= await User.findById('6365fc3ca51227571065d503')
-//     await user.populate('tasks')
-//     console.log(user.tasks);
-// }
-
-
-// main()
 
 
 
